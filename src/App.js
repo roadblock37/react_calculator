@@ -2,7 +2,6 @@ import { useReducer } from "react";
 import "./index.css";
 import DigitButton from "./digitButton";
 import OperationButton from "./operationButton";
-import { toBePartiallyChecked } from "@testing-library/jest-dom/dist/matchers";
 
 // object of actions used in reducer
 export const ACTIONS = {
@@ -33,7 +32,7 @@ function reducer(state, { type, payload }) {
       }
       return {
         ...state,
-        currentOperand: `${currentOperand || ""}${payload.digit}`,
+        currentOperand: `${state.currentOperand || ""}${payload.digit}`,
       };
     case ACTIONS.CLEAR:
       return {};
@@ -134,6 +133,7 @@ const INTEGER_FORMATTER = new Intl.NumberFormat("en-us", {
   maximumFractionDigits: 0,
 })
 
+// function used to format numbers that are displayed
 function formatOperand(operand) {
   if (operand == null) return
   // split integer on the decimal
