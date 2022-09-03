@@ -1,3 +1,12 @@
+/* color palettes */
+[theme1] {
+  --primaryBackground: #3A4663;
+  --outputBackGround: #181F33;
+  --outputText: #FFFFFF;
+  --buttonBoxBackGround: #242D44;
+  --primaryButtonBackground: #EAE3DC;
+  --primaryButtonText: #
+}
 *::before, *::after{
   box-sizing: border-box;
 }
