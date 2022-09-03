@@ -10,6 +10,7 @@ export const ACTIONS = {
   DELETE_DIGIT: "delete-digit",
   CHOOSE_OPERATION: "choose-operation",
   EVALUATE: "evaluate",
+  
 };
 
 function reducer(state, { type, payload }) {
@@ -58,7 +59,33 @@ function reducer(state, { type, payload }) {
         ...state,
         currentOperand: state.currentOperand.slice(0, -1)
       }
+    
     case ACTIONS.CHOOSE_OPERATION:
+      // if there are no inputs do nothing when an operation is clicked
+      if (state.currentOperand == null && state.previousOperand == null) {
+        return state;
+      }
+      if (state.currentOperand == null) {
+        return {
+          ...state,
+          operation: payload.operation
+        }
+      }
+      if (state.previousOperand == null) {
+        return {
+          ...state,
+          operation: payload.operation,
+          previousOperand: state.currentOperand,
+          currentOperand: null
+        }
+      }
+      return {
+        ...state,
+        previousOperand: evaluate(state),
+        currentOperand: null,
+        operation: payload.operation
+      }
+
     case ACTIONS.EVALUATE:
       if (state.operation == null ||
         state.currentOperand == null ||
