@@ -185,7 +185,11 @@ function App() {
   return (
     <div className="calculator-grid">
       <div className="header">
-        <img src="../src/"></img>
+        <p>Calc</p>
+        <div>
+          <label>Theme</label>
+          <input type="range" min="0" max="3" step="1"></input>
+        </div>
       </div>
       <div className="output">
         <div className="previous-operand">
