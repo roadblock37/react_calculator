@@ -13,22 +13,103 @@
   --equalButtonShadow: #93261A;
   
 }
-*::before, *::after{
+
+/* set box sizing for page */
+*, *::before, *::after{
   box-sizing: border-box;
 }
 
+/* 
+=================
+layout containers
+=================
+*/
 body {
   margin: 0;
   background: var(--primaryBackground);
+  
 }
 
-.calculator-grid {
+/* create a grid for the page layout */
+#root {
   display: grid;
+  grid-template-columns: repeat(12, 1fr);
+}
+
+/* container holding calculator */
+.calculator-grid {
+  grid-column: 4 / span 6;
+  display: flex;
+  flex-direction: column;
   justify-content: center;
   margin-top: 2rem;
-  grid-template-columns: repeat(4, 6rem);
-  grid-template-rows: minmax(7rem, auto) repeat(5, 6rem);
+  height: 551px;
 }
+
+/* grid container that holds all buttons */
+.button-grid {
+  display: grid;
+  width: 100%;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  padding: 1rem;
+  background-color: var(--buttonBoxBackGround);
+  border-radius: 10px;
+}
+
+/* 
+===========
+output fields for 
+current and previous operand
+===========
+*/
+.output {
+  width: 100%;
+  background-color: var(--outputBackGround);
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: space-around;
+  padding: 2.75rem;
+  word-wrap: break-word;
+  word-break: break-all;
+  margin-bottom: 1rem;
+}
+
+.output .previous-operand {
+  color: var(--outputText);
+  font-size: 1.5rem;
+}
+
+.output .current-operand {
+  color: var(--outputText);
+  font-size: 2.5rem;
+}
+
+
+/* =========
+  digit buttons
+  ==========
+ */
+/* primary number buttons */
+.digitButton {
+  background-color: var(--primaryButtonBackground);
+  border-radius: 10px;
+  vertical-align: middle;
+  height: 64px;
+  width: 101px;
+  font-weight: bold;
+  font-size: 40px;
+  border: none;
+  box-shadow: 0px -4px 2px -2px var(--primaryButtonShadow) inset;
+}
+
+.digitButton:hover {
+  cursor: pointer;
+}
+
+
 
 /* .calculator-grid > button {
   cursor: pointer;
@@ -47,28 +128,6 @@ body {
   grid-column: span 2;
 }
 
-.output {
-  grid-column: 1/ -1;
-  background-color: var(--outputBackGround);
-  border-radius: 10px;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  justify-content: space-around;
-  padding: 2.75rem;
-  word-wrap: break-word;
-  word-break: break-all;
-  margin-bottom: 1rem;
-}
 
-.output .previous-operand {
-  color: rgba(255, 255, 255, .75);
-  font-size: 1.5rem;
-}
-
-.output .current-operand {
-  color: white;
-  font-size: 2.5rem;
-}
 
 
