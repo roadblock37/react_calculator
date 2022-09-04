@@ -7,10 +7,13 @@
   --primaryButtonBackground: #EAE3DC;
   --primaryButtonShadow: #B3A497;
   --primaryButtonText: #434A59;
+  --primaryButtonHover: #FFFFFF;
   --secondaryButtonBackground: #647198;
   --secondaryButtonShadow: #414E73;
+  --secondaryButtonHover: #A2B2E1;
   --equalButtonBackground: #D03F2F;
   --equalButtonShadow: #93261A;
+  --equalButtonHover: #F96B5B;
   
 }
 
@@ -107,6 +110,7 @@ current and previous operand
 
 .digitButton:hover {
   cursor: pointer;
+  background-color: var(--primaryButtonHover);
 }
 
 /* reset and delete buttons */
@@ -120,6 +124,11 @@ current and previous operand
   color: var(--secondaryButtonText);
 }
 
+.secondaryButton:hover {
+  background-color: var(--secondaryButtonHover);
+  cursor: pointer;
+}
+
 /* equal button */
 .equal {
   background-color: var(--equalButtonBackground);
@@ -129,22 +138,11 @@ current and previous operand
   border: none;
   font-size: 28px;
   font-weight: bold;
-
 }
 
-
-
-/* .calculator-grid > button {
+.equal:hover {
+  background-color: var(--equalButtonHover);
   cursor: pointer;
-  font-size: 2rem;
-  border: 1px solid white;
-  outline: none;
-  background-color: rgba(255, 255, 255, .75);
-} */
-
-.calculator-grid > button:hover,
-.calculator-grid > button:focus {
-  background-color: rgba(255, 255, 255, .9);
 }
 
 .span-two {
