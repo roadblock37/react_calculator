@@ -1,11 +1,17 @@
 /* color palettes */
-[theme1] {
-  --primaryBackground: #3A4663;
+ :root{--primaryBackground: #3A4663;
   --outputBackGround: #181F33;
   --outputText: #FFFFFF;
+  --secondaryButtonText: #FFFFFF;
   --buttonBoxBackGround: #242D44;
   --primaryButtonBackground: #EAE3DC;
-  --primaryButtonText: #
+  --primaryButtonShadow: #B3A497;
+  --primaryButtonText: #434A59;
+  --secondaryButtonBackground: #647198;
+  --secondaryButtonShadow: #414E73;
+  --equalButtonBackground: #D03F2F;
+  --equalButtonShadow: #93261A;
+  
 }
 *::before, *::after{
   box-sizing: border-box;
@@ -13,7 +19,7 @@
 
 body {
   margin: 0;
-  background: linear-gradient(to right, #00aaff, #00ff6c);
+  background: var(--primaryBackground);
 }
 
 .calculator-grid {
@@ -24,13 +30,13 @@ body {
   grid-template-rows: minmax(7rem, auto) repeat(5, 6rem);
 }
 
-.calculator-grid > button {
+/* .calculator-grid > button {
   cursor: pointer;
   font-size: 2rem;
   border: 1px solid white;
   outline: none;
   background-color: rgba(255, 255, 255, .75);
-}
+} */
 
 .calculator-grid > button:hover,
 .calculator-grid > button:focus {
@@ -43,7 +49,8 @@ body {
 
 .output {
   grid-column: 1/ -1;
-  background-color: rgba(0, 0, 0, .75);
+  background-color: var(--outputBackGround);
+  border-radius: 10px;
   display: flex;
   flex-direction: column;
   align-items: flex-end;
@@ -51,6 +58,7 @@ body {
   padding: 2.75rem;
   word-wrap: break-word;
   word-break: break-all;
+  margin-bottom: 1rem;
 }
 
 .output .previous-operand {

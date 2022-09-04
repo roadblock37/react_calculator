@@ -1,0 +1,14 @@
+:root {
+    --primaryBackground: #3A4663;
+  --outputBackGround: #181F33;
+  --outputText: #FFFFFF;
+  --secondaryButtonText: #FFFFFF;
+  --buttonBoxBackGround: #242D44;
+  --primaryButtonBackground: #EAE3DC;
+  --primaryButtonShadow: #B3A497;
+  --primaryButtonText: #434A59;
+  --secondaryButtonBackground: #647198;
+  --secondaryButtonShadow: #414E73;
+  --equalButtonBackground: #D03F2F;
+  --equalButtonShadow: #93261A;
+}

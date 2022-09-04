@@ -17,6 +17,7 @@ function reducer(state, { type, payload }) {
   switch (type) {
     case ACTIONS.ADD_DIGIT:
       if (state.overwrite) {
+        
         return {
           ...state,
           currentOperand: payload.digit,
@@ -188,6 +189,7 @@ function App() {
         </div>
         <div className="current-operand">{formatOperand(currentOperand)}</div>
       </div>
+      <div className="button-grid">
       <button
         className="span-two"
         onClick={() => dispatch({ type: ACTIONS.CLEAR })}>
@@ -211,7 +213,9 @@ function App() {
       <OperationButton operation="-" dispatch={dispatch} />
       <DigitButton digit="." dispatch={dispatch} />
       <DigitButton digit="0" dispatch={dispatch} />
-      <button className="span-two" onClick={() => dispatch({type: ACTIONS.EVALUATE})}>=</button>
+        <button className="span-two" onClick={() => dispatch({ type: ACTIONS.EVALUATE })}>=</button>
+      </div>
+      
 
     </div>
   );
