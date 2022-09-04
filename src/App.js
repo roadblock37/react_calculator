@@ -10,19 +10,17 @@ export const ACTIONS = {
   DELETE_DIGIT: "delete-digit",
   CHOOSE_OPERATION: "choose-operation",
   EVALUATE: "evaluate",
-  
 };
 
 function reducer(state, { type, payload }) {
   switch (type) {
     case ACTIONS.ADD_DIGIT:
       if (state.overwrite) {
-        
         return {
           ...state,
           currentOperand: payload.digit,
-          overwrite: false
-        }
+          overwrite: false,
+        };
       }
       // if current operand is 0 then return acurrent state
       if (payload.digit === "0" && state.currentOperand === "0") {
@@ -43,24 +41,26 @@ function reducer(state, { type, payload }) {
         return {
           ...state,
           overwrite: false,
-          currentOperand: null
-        }
+          currentOperand: null,
+        };
       }
       // if currentOperand is empty do nothing
-      if (state.currentOperand == null) { return state }
+      if (state.currentOperand == null) {
+        return state;
+      }
       // if user tries to delete last digit of currentOperand revert back to null
       if (state.currentOperand.length === 1) {
         return {
           ...state,
-          currentOperand: null
-        }
+          currentOperand: null,
+        };
       }
       // remove last digit of currentOperand
       return {
         ...state,
-        currentOperand: state.currentOperand.slice(0, -1)
-      }
-    
+        currentOperand: state.currentOperand.slice(0, -1),
+      };
+
     case ACTIONS.CHOOSE_OPERATION:
       // if there are no inputs do nothing when an operation is clicked
       if (state.currentOperand == null && state.previousOperand == null) {
@@ -69,28 +69,30 @@ function reducer(state, { type, payload }) {
       if (state.currentOperand == null) {
         return {
           ...state,
-          operation: payload.operation
-        }
+          operation: payload.operation,
+        };
       }
       if (state.previousOperand == null) {
         return {
           ...state,
           operation: payload.operation,
           previousOperand: state.currentOperand,
-          currentOperand: null
-        }
+          currentOperand: null,
+        };
       }
       return {
         ...state,
         previousOperand: evaluate(state),
         currentOperand: null,
-        operation: payload.operation
-      }
+        operation: payload.operation,
+      };
 
     case ACTIONS.EVALUATE:
-      if (state.operation == null ||
+      if (
+        state.operation == null ||
         state.currentOperand == null ||
-        state.previousOperand == null) {
+        state.previousOperand == null
+      ) {
         return state;
       }
       return {
@@ -98,8 +100,8 @@ function reducer(state, { type, payload }) {
         previousOperand: null,
         currentOperand: evaluate(state),
         operation: null,
-        overwrite: true
-      }
+        overwrite: true,
+      };
       // if there are no inputs do nothing
       if (state.currentOperand == null && state.previousOperand == null) {
         return state;
@@ -159,19 +161,19 @@ function evaluate({ currentOperand, previousOperand, operation }) {
 // format the integers being displayed
 const INTEGER_FORMATTER = new Intl.NumberFormat("en-us", {
   maximumFractionDigits: 0,
-})
+});
 
 // function used to format numbers that are displayed
 function formatOperand(operand) {
-  if (operand == null) return
+  if (operand == null) return;
   // split integer on the decimal
-  const [integer, decimal] = operand.split(".")
+  const [integer, decimal] = operand.split(".");
   // if there is no decimal format the interger
   if (decimal == null) {
-    return INTEGER_FORMATTER.format(integer)
+    return INTEGER_FORMATTER.format(integer);
   }
   // format the interger when there is a decimal present
-  return `${INTEGER_FORMATTER.format(integer)}.${decimal}`
+  return `${INTEGER_FORMATTER.format(integer)}.${decimal}`;
 }
 
 function App() {
@@ -182,6 +184,9 @@ function App() {
 
   return (
     <div className="calculator-grid">
+      <div className="header">
+        <img src="../src/"></img>
+      </div>
       <div className="output">
         <div className="previous-operand">
           {formatOperand(previousOperand)}
@@ -190,33 +195,37 @@ function App() {
         <div className="current-operand">{formatOperand(currentOperand)}</div>
       </div>
       <div className="button-grid">
-      <button
-        className="span-two secondaryButton"
-        onClick={() => dispatch({ type: ACTIONS.CLEAR })}>
-        Reset
-      </button>
-      <button className="secondaryButton" onClick={() => dispatch({type: ACTIONS.DELETE_DIGIT})}>DEL</button>
-      <OperationButton operation="/" dispatch={dispatch} />
-      <DigitButton digit="1" dispatch={dispatch} className="digitButton"/>
-      <DigitButton digit="2" dispatch={dispatch} className="digitButton"/>
-      <DigitButton digit="3" dispatch={dispatch} className="digitButton"/>
-      <OperationButton operation="*" dispatch={dispatch} />
-
-      <DigitButton digit="4" dispatch={dispatch} className="digitButton"/>
-      <DigitButton digit="5" dispatch={dispatch} className="digitButton"/>
-      <DigitButton digit="6" dispatch={dispatch} className="digitButton"/>
-      <OperationButton operation="+" dispatch={dispatch} />
-
-      <DigitButton digit="7" dispatch={dispatch} className="digitButton"/>
-      <DigitButton digit="8" dispatch={dispatch} className="digitButton"/>
-      <DigitButton digit="9" dispatch={dispatch} className="digitButton"/>
-      <OperationButton operation="-" dispatch={dispatch} />
-      <DigitButton digit="." dispatch={dispatch} />
-      <DigitButton digit="0" dispatch={dispatch} className="digitButton"/>
-        <button className="span-two equal" onClick={() => dispatch({ type: ACTIONS.EVALUATE })}>=</button>
+        <DigitButton digit="7" dispatch={dispatch} className="digitButton" />
+        <DigitButton digit="8" dispatch={dispatch} className="digitButton" />
+        <DigitButton digit="9" dispatch={dispatch} className="digitButton" />
+        <button
+          className="secondaryButton"
+          onClick={() => dispatch({ type: ACTIONS.DELETE_DIGIT })}>
+          DEL
+        </button>
+        <DigitButton digit="4" dispatch={dispatch} className="digitButton" />
+        <DigitButton digit="5" dispatch={dispatch} className="digitButton" />
+        <DigitButton digit="6" dispatch={dispatch} className="digitButton" />
+        <OperationButton operation="+" dispatch={dispatch} />
+        <DigitButton digit="1" dispatch={dispatch} className="digitButton" />
+        <DigitButton digit="2" dispatch={dispatch} className="digitButton" />
+        <DigitButton digit="3" dispatch={dispatch} className="digitButton" />
+        <OperationButton operation="-" dispatch={dispatch} />
+        <DigitButton digit="." dispatch={dispatch} />
+        <DigitButton digit="0" dispatch={dispatch} className="digitButton" />
+        <OperationButton operation="/" dispatch={dispatch} />
+        <OperationButton operation="*" dispatch={dispatch} />
+        <button
+          className="span-two secondaryButton"
+          onClick={() => dispatch({ type: ACTIONS.CLEAR })}>
+          Reset
+        </button>
+        <button
+          className="span-two equal"
+          onClick={() => dispatch({ type: ACTIONS.EVALUATE })}>
+          =
+        </button>
       </div>
-      
-
     </div>
   );
 }
