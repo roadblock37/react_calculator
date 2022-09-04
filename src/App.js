@@ -191,29 +191,29 @@ function App() {
       </div>
       <div className="button-grid">
       <button
-        className="span-two"
+        className="span-two secondaryButton"
         onClick={() => dispatch({ type: ACTIONS.CLEAR })}>
-        AC
+        Reset
       </button>
-      <button onClick={() => dispatch({type: ACTIONS.DELETE_DIGIT})}>DEL</button>
+      <button className="secondaryButton" onClick={() => dispatch({type: ACTIONS.DELETE_DIGIT})}>DEL</button>
       <OperationButton operation="/" dispatch={dispatch} />
-      <DigitButton digit="1" dispatch={dispatch} />
-      <DigitButton digit="2" dispatch={dispatch} />
-      <DigitButton digit="3" dispatch={dispatch} />
+      <DigitButton digit="1" dispatch={dispatch} className="digitButton"/>
+      <DigitButton digit="2" dispatch={dispatch} className="digitButton"/>
+      <DigitButton digit="3" dispatch={dispatch} className="digitButton"/>
       <OperationButton operation="*" dispatch={dispatch} />
 
-      <DigitButton digit="4" dispatch={dispatch} />
-      <DigitButton digit="5" dispatch={dispatch} />
-      <DigitButton digit="6" dispatch={dispatch} />
+      <DigitButton digit="4" dispatch={dispatch} className="digitButton"/>
+      <DigitButton digit="5" dispatch={dispatch} className="digitButton"/>
+      <DigitButton digit="6" dispatch={dispatch} className="digitButton"/>
       <OperationButton operation="+" dispatch={dispatch} />
 
-      <DigitButton digit="7" dispatch={dispatch} />
-      <DigitButton digit="8" dispatch={dispatch} />
-      <DigitButton digit="9" dispatch={dispatch} />
+      <DigitButton digit="7" dispatch={dispatch} className="digitButton"/>
+      <DigitButton digit="8" dispatch={dispatch} className="digitButton"/>
+      <DigitButton digit="9" dispatch={dispatch} className="digitButton"/>
       <OperationButton operation="-" dispatch={dispatch} />
       <DigitButton digit="." dispatch={dispatch} />
-      <DigitButton digit="0" dispatch={dispatch} />
-        <button className="span-two" onClick={() => dispatch({ type: ACTIONS.EVALUATE })}>=</button>
+      <DigitButton digit="0" dispatch={dispatch} className="digitButton"/>
+        <button className="span-two equal" onClick={() => dispatch({ type: ACTIONS.EVALUATE })}>=</button>
       </div>
       
 

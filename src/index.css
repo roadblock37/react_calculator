@@ -92,7 +92,7 @@ current and previous operand
   digit buttons
   ==========
  */
-/* primary number buttons */
+/* primary number and operation buttons */
 .digitButton {
   background-color: var(--primaryButtonBackground);
   border-radius: 10px;
@@ -107,6 +107,29 @@ current and previous operand
 
 .digitButton:hover {
   cursor: pointer;
+}
+
+/* reset and delete buttons */
+.secondaryButton {
+  background-color: var(--secondaryButtonBackground);
+  font-size: 28px;
+  font-weight: bold;
+  box-shadow: 0px -4px 2px -2px var(--secondaryButtonShadow) inset;
+  border-radius: 10px;
+  border: none;
+  color: var(--secondaryButtonText);
+}
+
+/* equal button */
+.equal {
+  background-color: var(--equalButtonBackground);
+  box-shadow: 0px -4px 2px -2px var(--equalButtonShadow) inset;
+  color: var(--secondaryButtonText);
+  border-radius: 10px;
+  border: none;
+  font-size: 28px;
+  font-weight: bold;
+
 }
 
 
